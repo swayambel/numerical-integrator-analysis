@@ -18,3 +18,10 @@ def derivatives(state):
 state = np.array([1.0, 0.0, 0.0, 1.0])
 
 print("Derivatives:", derivatives(state))
+
+import matplotlib.pyplot as plt
+
+plt.plot(trajectory[:,0], trajectory[:,1])
+plt.gca().set_aspect('equal')
+plt.title("Orbit using Euler Method")
+plt.show()
