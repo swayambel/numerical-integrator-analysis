@@ -45,3 +45,12 @@ plt.gca().set_aspect('equal')
 plt.legend()
 plt.title("Orbit using Euler Method")
 plt.show()
+
+
+# RK4 Integrator
+def rk4_steps(state,dt):
+  k1 = derivatives(state)
+  k2 = derivatives(state + 0.5 * dt * k1)
+  k3 = derivatives(state + 0.5 * dt * k2)
+  k4 = derivatives(state * dt * k3)
+  return state + (dt/6.0) * (k1 + 2*k2 + 2*k3 + k4)
