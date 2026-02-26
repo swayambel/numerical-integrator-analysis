@@ -37,7 +37,7 @@ trajectory = np.array(trajectory)
 
 import matplotlib.pyplot as plt
 
-plt.plot(trajectory[:,0], trajectory[:,1], label="Orbit")
+plt.plot(trajectory[:,0], trajectory[:,1], label="Euler Orbit")
 plt.scatter(trajectory[0,0], trajectory[0,1], color='green', label="Start")
 plt.scatter(trajectory[-1,0], trajectory[-1,1], color='red', label="End")
 
@@ -52,5 +52,18 @@ def rk4_steps(state,dt):
   k1 = derivatives(state)
   k2 = derivatives(state + 0.5 * dt * k1)
   k3 = derivatives(state + 0.5 * dt * k2)
-  k4 = derivatives(state * dt * k3)
+  k4 = derivatives(state + dt * k3)
   return state + (dt/6.0) * (k1 + 2*k2 + 2*k3 + k4)
+
+state = np.array([1.0, 0.0, 0.0, 1.0])
+
+trajectory_rk4 = []
+for _ in range(steps):
+    trajectory_rk4.append(state[:2])
+    state = rk4_steps(state,dt)
+trajectory_rk4 = np.array(trajectory_rk4)
+
+plt.gca().set_aspect('equal')
+plt.plot(trajectory_rk4[:,0], trajectory_rk4[:,1], label = "RK4 Orbit")
+plt.scatter(trajectory_rk4[0,0], trajectory_rk4[0,1], color='green', label='Start')
+plt.scatter(trajectory_rk4[0,0], trajectory_rk4[0,1], color='red', label='End')
