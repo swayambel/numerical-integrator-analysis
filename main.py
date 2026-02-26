@@ -1,7 +1,7 @@
 # Numerical Integrator Analysis
 import numpy as np
 
-# Gravitational parameter (GM)
+# Gravitational parameter 
 GM = 1.0 
 
 def derivatives(state):
