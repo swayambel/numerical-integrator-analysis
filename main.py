@@ -55,15 +55,32 @@ def rk4_steps(state,dt):
   k4 = derivatives(state + dt * k3)
   return state + (dt/6.0) * (k1 + 2*k2 + 2*k3 + k4)
 
+def spec_ene(state):
+    x, y, vx, vy = state
+    r = np.sqrt(x**2 + y**2)
+    v2 = vx**2 + vy**2
+    return 0.5* v2 - GM/r
+    
 state = np.array([1.0, 0.0, 0.0, 1.0])
 
+energy_rk4 = []
 trajectory_rk4 = []
 for _ in range(steps):
     trajectory_rk4.append(state[:2])
+    ene_rk4.append(spec_ene(state))
     state = rk4_steps(state,dt)
-trajectory_rk4 = np.array(trajectory_rk4)
 
+trajectory_rk4 = np.array(trajectory_rk4)
 plt.gca().set_aspect('equal')
 plt.plot(trajectory_rk4[:,0], trajectory_rk4[:,1], label = "RK4 Orbit")
 plt.scatter(trajectory_rk4[0,0], trajectory_rk4[0,1], color='green', label='Start')
 plt.scatter(trajectory_rk4[0,0], trajectory_rk4[0,1], color='red', label='End')
+
+# need to plot in subsequent cell cannot be plotted in same cell
+energy_rk4 = np.array(energy_rk4)
+plt.plot(energy_rk4)
+plt.legend()
+plt.title("RK4 Specific Energy vs Time")
+plt.show()
+
+
