@@ -46,6 +46,22 @@ plt.legend()
 plt.title("Orbit using Euler Method")
 plt.show()
 
+# RK2 integrator
+def rk2_step(state,dt):
+    k1 = derivatives(state)
+    k2 = derivatives(state + dt * k1)
+    return state + 0.5 * dt * (k1 + k2)
+
+state = np.array([1.0, 0.0, 0.0, 1.0])
+trajectory_rk2 = []
+for _ in range(steps):
+    trajectory_rk2.append(state[:2])
+    state = rk2_step(state,dt)
+
+trajectory_rk2 = np.array(trajectory_rk2)
+plt.gca().set_aspect('equal')
+plt.plot(trajectory_rk2[:,0], trajectory_rk2[:,1], label = "RK2 orbit")
+
 
 # RK4 Integrator
 def rk4_steps(state,dt):
