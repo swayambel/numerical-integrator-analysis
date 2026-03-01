@@ -1,8 +1,8 @@
 import matplotlib.pyplot as plt
 
-from physics import derivatives, specific_energy
-from integrators import euler_step, rk2_step, rk4_step
-from analysis import simulate
+# from physics import derivatives, specific_energy
+# from integrators import euler_step, rk2_step, rk4_step
+# from analysis import simulate
 
 dt = 0.01
 steps = 5000
