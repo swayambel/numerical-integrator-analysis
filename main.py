@@ -11,6 +11,10 @@ traj_euler, energy_euler = simulate(euler_step, derivatives, dt, steps, specific
 traj_rk2, energy_rk2 = simulate(rk2_step, derivatives, dt, steps, specific_energy)
 traj_rk4, energy_rk4 = simulate(rk4_step, derivatives, dt, steps, specific_energy)
 
+delta_euler = energy_euler - energy_euler[0]
+delta_rk2 = energy_rk2 - energy_rk2[0]
+delta_rk4 = energy_rk4 - energy_rk4[0]
+
 plt.plot(traj_euler[:,0], traj_euler[:,1], label="Euler")
 plt.plot(traj_rk2[:,0], traj_rk2[:,1], label="RK2")
 plt.plot(traj_rk4[:,0], traj_rk4[:,1], label="RK4")
@@ -27,3 +31,6 @@ plt.plot(energy_rk4, label="RK4")
 plt.legend()
 plt.title("Specific Energy vs Time")
 plt.show()
+
+
+
