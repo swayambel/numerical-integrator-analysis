@@ -24,6 +24,7 @@ plt.legend()
 plt.title("Integrator Comparison")
 plt.show()
 
+# Specific Energy
 plt.plot(energy_euler, label="Euler")
 plt.plot(energy_rk2, label="RK2")
 plt.plot(energy_rk4, label="RK4")
@@ -32,5 +33,14 @@ plt.legend()
 plt.title("Specific Energy vs Time")
 plt.show()
 
+# Drift
+plt.plot(delta_euler, label="Euler")
+plt.plot(delta_rk2, label="RK2")
+plt.plot(delta_rk4, label="RK4")
 
+plt.legend()
+plt.title("Energy Drift Comparison")
+plt.xlabel("Step")
+plt.ylabel("ΔEnergy")
+plt.show()
 
