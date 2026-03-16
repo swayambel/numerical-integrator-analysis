@@ -83,16 +83,6 @@ These results demonstrate how integrator order influences long-term numerical st
 
 ---
 
-## Project Structure
-
-numerical-integrator-analysis/
-
-README.md – project documentation
-numerical_integrator_analysis.ipynb – main analysis notebook
-LICENSE – MIT license
-
----
-
 ## Tools Used
 
 Python
